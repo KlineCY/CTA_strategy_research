@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cta-strategy-research"
+version = "0.1.0"
+description = "Reproducible research pipeline for the 37-ETF CTA project"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy==2.3.5",
+  "pandas==2.3.3",
+  "scipy==1.16.3",
+  "scikit-learn==1.7.2",
+  "xgboost==3.2.0",
+  "joblib==1.5.2",
+  "matplotlib==3.10.6",
+  "nbformat==5.10.4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.4.2", "nbclient==0.10.2", "ipykernel==6.31.0"]
+
+[project.scripts]
+cta-research = "cta_project.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
